@@ -1,4 +1,5 @@
 import Input from '@/components/input';
+import axios from 'axios';
 import { use, useCallback, useState } from 'react';
 
 const Auth = () => {
@@ -10,6 +11,18 @@ const Auth = () => {
     setVariant((currentVariant) =>
       currentVariant === 'login' ? 'register' : 'login',
     );
+  }, []);
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post('api/register', {
+        email,
+        name,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
@@ -59,7 +72,9 @@ const Auth = () => {
               {variant === 'login' ? 'Login' : 'Sign Up'}
             </button>
             <p className="text-neutral-500 mt-12">
-             {variant === 'login' ? 'First time using Netflix?' : 'Already have an account'} 
+              {variant === 'login'
+                ? 'First time using Netflix?'
+                : 'Already have an account'}
               <span
                 onClick={toggleVariant}
                 className="text-white ml-1 hover:underline cutsot-pointer"
