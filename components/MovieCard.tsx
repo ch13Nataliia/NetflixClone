@@ -84,7 +84,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 
 
     
-            <FavoriteButton  movieId= {data?.id}/>
+            <FavoriteButton  movieId= {data.id}/>
            
           </div>
           <p className='text-green-400 font-semibold md-4'>

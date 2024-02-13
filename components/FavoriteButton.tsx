@@ -7,8 +7,9 @@ import useFavorites from '@/hooks/useFavorites';
 import { FaCheck } from 'react-icons/fa';
 
 interface FavoriteButtonProps {
-  movieId: string;
+  movieId: string
 }
+
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   const { mutate: mutateFavorites } = useFavorites();
@@ -27,17 +28,18 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
     if (isFavorite) {
       response = await axios.delete('/api/favorite', { data: { movieId } });
     } else {
-      response = await axios.post('/api/favorite', {movieId} );
+      response = await axios.post('/api/favorite', { movieId });
     }
 
     const updatedFavoriteIds = response?.data?.favoriteIds;
 
-    mutate({
-      ...currentUser,
+    mutate({ 
+      ...currentUser, 
       favoriteIds: updatedFavoriteIds,
     });
     mutateFavorites();
   }, [movieId, isFavorite, currentUser, mutate, mutateFavorites]);
+
 
   const Icon = isFavorite ? FaCheck : MdFavorite;
   return (
