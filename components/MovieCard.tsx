@@ -1,8 +1,10 @@
 import React from 'react';
 import { IoPlay } from 'react-icons/io5';
+import { FiChevronDown } from "react-icons/fi";
 
 import { useRouter } from 'next/router';
 import FavoriteButton from './FavoriteButton';
+import useInfoModal from '@/hooks/useInfoModule';
 
 interface MovieCardProps {
   data: Record<string, any>[];
@@ -10,6 +12,10 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
+
+
+  const { openModal} = useInfoModal()
+
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
@@ -84,6 +90,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             </div>
 
             <FavoriteButton movieId={data.id} />
+            <div onClick={() => openModal(data?.id)} className='cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300'>
+            <FiChevronDown className='text-white group-hover/item:text-neutral-300' size={30}/>
+
+            </div>
           </div>
           <p className="text-green-400 font-semibold md-4">
             new <span className="text-white "></span>
