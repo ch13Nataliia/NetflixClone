@@ -5,9 +5,11 @@ import { FiChevronDown } from "react-icons/fi";
 import { useRouter } from 'next/router';
 import FavoriteButton from './FavoriteButton';
 import useInfoModal from '@/hooks/useInfoModule';
+import { MovieInterface } from '@/types';
+
 
 interface MovieCardProps {
-  data: Record<string, any>[];
+  data: MovieInterface;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
