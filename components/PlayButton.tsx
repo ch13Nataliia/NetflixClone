@@ -9,7 +9,7 @@ interface PlayButtonProps {
 const PLayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
   const router = useRouter();
   return (
-<button className=" 
+<button onClick={() => router.push(`/watch/${movieId}`)} className=" 
 bg-white 
 rounded-md 
 py-1 md:py-2
@@ -22,7 +22,8 @@ py-1 md:py-2
 
   items-center
    hover:bg-neutral-300 
-   transition">Play</button>
+   transition">
+    <IoPlay size={25} className='mr-1' />Play</button>
   );
 };
 
