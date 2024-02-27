@@ -5,7 +5,8 @@ import { getSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
-import Input from '@/components/Input';
+import InputMod from '@/components/InputMod';
+// import Input from '@/components/Input';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -81,7 +82,7 @@ const Auth = () => {
             </h2>
             <div className="flex flex-col gap-4">
               {variant === 'register' && (
-                <Input
+                <InputMod
                   id="name"
                   type="text"
                   label="Username"
@@ -89,14 +90,14 @@ const Auth = () => {
                   onChange={(e: any) => setName(e.target.value)}
                 />
               )}
-              <Input
+              <InputMod
                 id="email"
                 type="email"
                 label="Email address or phone number"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />
-              <Input
+              <InputMod
                 type="password"
                 id="password"
                 label="Password"
